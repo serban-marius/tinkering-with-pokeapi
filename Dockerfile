@@ -1,12 +1,12 @@
 FROM node:12.19.0-alpine3.9
 
-WORKDIR /usr/src/app
+RUN apk update && apk add bash
 
-COPY package*.json ./
+WORKDIR /app
 
-RUN npm install glob rimraf
+COPY ./package*.json ./
 
-RUN npm install
+RUN npm install --quiet
 
 COPY . .
 
