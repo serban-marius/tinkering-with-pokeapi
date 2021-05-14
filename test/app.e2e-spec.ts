@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import AppModule from '../src/example/app.module';
+import AppModule from '../src/AppModule';
 import { INestApplication } from '@nestjs/common';
 import request from 'supertest';
 

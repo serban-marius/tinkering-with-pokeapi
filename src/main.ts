@@ -1,5 +1,5 @@
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import AppModule from './example/app.module';
+import AppModule from './AppModule';
 import { INestApplication } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import basicAuth from 'express-basic-auth';

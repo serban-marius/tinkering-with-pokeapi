@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-class AppService {
+class PokeApiService {
   bar = 'Hello World!';
 
   getHello(): string {
@@ -9,4 +9,4 @@ class AppService {
   }
 }
 
-export default AppService;
+export default PokeApiService;
