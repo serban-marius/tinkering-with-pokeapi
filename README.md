@@ -1,5 +1,10 @@
 # tinkering-with-pokeapi
-NestJS API build as a random showcase of acquired knowledge.
+NestJS API build as a random showcase of acquired knowledge. <br>
+The chosen project structure is a Domain-Driven Design based Hexagonal Architecture inspired by 
+[this](https://vaadin.com/learn/tutorials/ddd/ddd_and_hexagonal) article.
+* Adapter --> The connection with the outside world (Users, DB & external APIs for example).
+* Application --> Here we will occur the magic 🧙🏽‍. 
+* Domain --> Soo called "business logic" resides here.
 
 ---
 The first step we need to perform is to create an `.env` in the root of the project with the same content that cand be 
@@ -47,7 +52,8 @@ to avoid all the missing modules messages. Just execute
 * If new dependencies added to `package.json` access Docker container as explained
   [here](https://github.com/serban-marius/tinkering-with-pokeapi#docker-)  and run:
 ```bash
-npm install 
+npm install {dependency-name-goes-here}
+#example --> npm install cqrs
 ```
 * If `package-lock.json` has all the dependencies we need, is okay to use from outside:
 ```bash
@@ -73,7 +79,7 @@ docker exec -it tinkering_with_pokeapi-prod bash
 
 ---
 
-## Swagger 🧙🏽‍♂️ 
+## Swagger 🕵🏽
 The swagger can be found [here](http://localhost:3000/api-docs). (If the project is running) <br>
 It will ask for user & password:
 ```
