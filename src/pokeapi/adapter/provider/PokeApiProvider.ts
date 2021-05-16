@@ -16,7 +16,7 @@ class PokeApiProvider {
     return (await this.get('pokemon-color/' + color)).data;
   }
 
-  public async getPokemonSpeciesData(pokemonResults: IPokemonResult): Promise<IPokemonSpeciesInfo> {
+  public async getPokemonSpeciesInfo(pokemonResults: IPokemonResult): Promise<IPokemonSpeciesInfo> {
     return (await this.get('pokemon-species/' + pokemonResults.name)).data;
   }
 

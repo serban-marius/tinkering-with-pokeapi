@@ -9,18 +9,13 @@ class GetPokemonByColorHandler implements ICommandHandler<GetPokemonByColorComma
   public constructor(private readonly pokeApiService: PokeApiService, private readonly commonService: CommonService) {}
 
   public async execute(command: GetPokemonByColorCommand): Promise<ObjectsToCsv> {
-    const pokemonSpecies = await this.pokeApiService.getSomePokemonByColor(
+    const allPokemonOfColorBasicInfo = await this.pokeApiService.getAllPokemonOfColorBasicInfo(
       this.commonService.removeSpecialCharactersAndNumbers(command.color),
     );
-    const pokemonSpeciesInfo = await this.pokeApiService.getPokemonSpeciesInfoArrayFromPokemonSpeciesResultArray(
-      pokemonSpecies,
-    );
-    const pokemonBasicInfo = await this.pokeApiService.getPokemonBasicInfoArrayFromPokemonSpeciesInfoArray(
-      pokemonSpeciesInfo,
-    );
 
-    const pokemonBasicInfoSorted = pokemonBasicInfo.sort((a, b) => (a.baseExperience > b.baseExperience ? 1 : -1));
-    return this.commonService.objectArrayToCsv(pokemonBasicInfoSorted);
+    return this.commonService.objectArrayToCsv(
+      this.pokeApiService.sortPokemonBasicInfoByBaseExperience(allPokemonOfColorBasicInfo),
+    );
   }
 }
 
