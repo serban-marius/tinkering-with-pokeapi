@@ -49,10 +49,12 @@ class PokeApiController {
       type: 'string',
     },
   })
-  @ApiOkResponse({ type: ObjectsToCsv })
+  @ApiOkResponse({
+    description: 'Returns a CSV file with a list of All Pokemons of a color order by base_experience.',
+    type: 'text/csv',
+  })
   @Get('csv/:color')
-  // @ts-ignore TODO: Find solution for this.
-  public async getPokemonByColor(@Param('color') color: string, @Res() res): Promise<ObjectsToCsv> {
+  public async getPokemonByColor(@Param('color') color: string, @Res() res: any): Promise<ObjectsToCsv> {
     const csv = await this.commandBus.execute(new GetPokemonByColorCommand(color));
     await csv.toDisk('/app/dist/test.csv');
     return res.sendFile('/app/dist/test.csv');
