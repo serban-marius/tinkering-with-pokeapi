@@ -2,7 +2,7 @@
 NestJS API build as a random showcase of acquired knowledge. <br>
 The chosen project structure is a Domain-Driven Design based Hexagonal Architecture inspired by 
 [this](https://vaadin.com/learn/tutorials/ddd/ddd_and_hexagonal) article.
-* Adapter --> The connection with the outside world (Users, DB & external APIs for example).
+* Adapter --> Connection with the outside world (Users, DB & external APIs for example).
 * Application --> Here we will occur the magic 🧙🏽‍. 
 * Domain --> Soo called "business logic" resides here.
 
