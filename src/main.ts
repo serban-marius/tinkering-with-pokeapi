@@ -2,6 +2,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import AppModule from './AppModule';
 import { INestApplication } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+import PokeApiModule from './pokeapi/adapter/injector/PokeApiModule';
 import basicAuth from 'express-basic-auth';
 import { config } from 'dotenv';
 config();
@@ -18,7 +19,7 @@ function initSwagger(app: INestApplication): void {
 
     const options = new DocumentBuilder().setTitle('tinkering-with-pokeapi').build();
     const document = SwaggerModule.createDocument(app, options, {
-      include: [AppModule],
+      include: [AppModule, PokeApiModule],
     });
     SwaggerModule.setup('/api-docs', app, document);
   }

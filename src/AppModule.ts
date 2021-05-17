@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import {PokeApiModule} from './pokeapi/adapter/injector/PokeApiModule';
+import PokeApiModule from './pokeapi/adapter/injector/PokeApiModule';
 
 @Module({
   controllers: [],
