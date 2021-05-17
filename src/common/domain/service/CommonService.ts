@@ -1,3 +1,4 @@
+import EmptyStringException from '../../../pokeapi/domain/exception/EmptyStringException';
 import { Injectable } from '@nestjs/common';
 import ObjectsToCsv from 'objects-to-csv';
 
@@ -6,7 +7,11 @@ class CommonService {
   private readonly matchNonAlphabeticCharactersRegex = /[^a-zA-Z]+/g;
 
   public removeSpecialCharactersAndNumbers(originalString: string): string {
-    return this.removeFromString(originalString, this.matchNonAlphabeticCharactersRegex);
+    const resultString = this.removeFromString(originalString, this.matchNonAlphabeticCharactersRegex);
+    if (resultString === '') {
+      throw new EmptyStringException();
+    }
+    return resultString;
   }
 
   public removeFromString(originalString: string, whatToRemove: string | RegExp, replaceWith = ''): string {

@@ -9,9 +9,8 @@ class GetPokemonByNameHandler implements ICommandHandler<GetPokemonByNameCommand
   public constructor(private readonly pokeApiService: PokeApiService, private readonly commonService: CommonService) {}
 
   public async execute(command: GetPokemonByNameCommand): Promise<IPokemonFindByNameResponse> {
-    const allPokemonResultsByName = await this.pokeApiService.getAllPokemonByName(
-      this.commonService.removeSpecialCharactersAndNumbers(command.name),
-    );
+    const name = this.commonService.removeSpecialCharactersAndNumbers(command.name);
+    const allPokemonResultsByName = await this.pokeApiService.getAllPokemonByName(name);
     return this.pokeApiService.getPokemonFindByNameResponseFromPokemonResultArray(allPokemonResultsByName);
   }
 }

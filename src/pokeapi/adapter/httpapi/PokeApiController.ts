@@ -39,7 +39,6 @@ class PokeApiController {
   }
 
   @ApiOperation({ description: 'Returns Pokemons by colour search.', summary: 'Get Pokemons by Name' })
-  @ApiProduces('text/csv')
   @ApiParam({
     name: 'color',
     schema: {

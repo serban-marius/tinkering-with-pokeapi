@@ -4,12 +4,17 @@ import IPokemonInfo from '../../domain/entity/IPokemonInfo';
 import IPokemonResponse from '../../domain/entity/IPokemonResponse';
 import IPokemonResult from '../../domain/entity/IPokemonResult';
 import IPokemonSpeciesInfo from '../../domain/entity/IPokemonSpeciesInfo';
+import PokeApiException from '../../domain/exception/PokeApiException';
 
 class PokeApiProvider {
   private readonly pokeApiV2Url = 'https://pokeapi.co/api/v2/';
 
   public async get(urlConcat?: string, options?: AxiosRequestConfig): Promise<AxiosResponse> {
-    return axios.get(this.pokeApiV2Url + urlConcat, options);
+    try {
+      return axios.get(this.pokeApiV2Url + urlConcat, options);
+    } catch (e) {
+      throw new PokeApiException();
+    }
   }
 
   public async getSomePokemonByColor(color: string): Promise<IPokemonColorResponse> {
