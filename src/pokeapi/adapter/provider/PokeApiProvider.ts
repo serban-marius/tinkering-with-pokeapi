@@ -11,7 +11,7 @@ class PokeApiProvider {
 
   public async get(urlConcat?: string, options?: AxiosRequestConfig): Promise<AxiosResponse> {
     try {
-      return axios.get(this.pokeApiV2Url + urlConcat, options);
+      return await axios.get(this.pokeApiV2Url + urlConcat, options);
     } catch (e) {
       throw new PokeApiException();
     }
