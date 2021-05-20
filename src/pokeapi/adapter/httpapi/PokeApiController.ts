@@ -39,6 +39,7 @@ class PokeApiController {
   }
 
   @ApiOperation({ description: 'Returns Pokemons by colour search.', summary: 'Get Pokemons by Name' })
+  @ApiProduces('text/csv')
   @ApiParam({
     name: 'color',
     schema: {
@@ -50,7 +51,6 @@ class PokeApiController {
   })
   @ApiOkResponse({
     description: 'Returns a CSV file with a list of All Pokemons of a color order by base_experience.',
-    type: 'text/csv',
   })
   @Get('csv/:color')
   public async getPokemonByColor(@Param('color') color: string, @Res() res: any): Promise<ObjectsToCsv> {
